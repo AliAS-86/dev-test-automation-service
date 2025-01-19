@@ -1,0 +1,19 @@
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db-restaurants
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: restaurants
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: T0k@lis1611
+
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data-persistence:/var/lib/mysql
+      - /home/alias-kube/dev/restaurama-food-app/mysql-init-seed-data.sql:/docker-entrypoint-initdb.d/mysql-init-seed-data.sql
+
+volumes:
+  mysql-data-persistence:
