@@ -13,5 +13,13 @@
 
     <!-- Service artifact -->
     <artifactId>restaurant-service</artifactId>
+    <!-- Adding module specific dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>com.restaurama</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
