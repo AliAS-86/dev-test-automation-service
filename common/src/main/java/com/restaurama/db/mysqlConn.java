@@ -44,20 +44,30 @@ public class mysqlConn {
                 pstmt.setObject(i + 1, params[i]);
             }
 
-            try (ResultSet rs = pstmt.executeQuery(query)) {
-                // Get metadata to retrieve count of columns for the results loop
-                ResultSetMetaData rsmd = rs.getMetaData();
-                int columnCount = rsmd.getColumnCount();
+            if (query.trim().toUpperCase().startsWith("SELECT")) {
+                try (ResultSet rs = pstmt.executeQuery(query)) {
+                    // Get metadata to retrieve count of columns for the results loop
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    int columnCount = rsmd.getColumnCount();
 
-                // Iterate over the table, each row and store each column data in map<key, val>
-                while (rs.next()) {
-                    Map<String, Object> row = new HashMap<>();
-                    for (int i = 1; i <= columnCount; i++) {
-                        row.put(rsmd.getColumnName(i), rs.getObject(i));
+                    // Iterate over the table, each row and store each column data in map<key, val>
+                    while (rs.next()) {
+                        Map<String, Object> row = new HashMap<>();
+                        for (int i = 1; i <= columnCount; i++) {
+                            row.put(rsmd.getColumnName(i), rs.getObject(i));
+                        }
+                        results.add(row);
                     }
-                    results.add(row);
                 }
             }
+            else {
+                // Handle non-SELECT queries (e.g., INSERT, UPDATE, DELETE)
+                int affectedRows = pstmt.executeUpdate();
+                Map<String, Object> updateInfo = new HashMap<>();
+                updateInfo.put("affectedRows", affectedRows);
+                results.add(updateInfo);
+            }
+
         } catch (SQLException | ClassNotFoundException e) {
             System.err.println("Error executing query: " + e.getMessage());
             // Optionally rethrow as a runtime exception
