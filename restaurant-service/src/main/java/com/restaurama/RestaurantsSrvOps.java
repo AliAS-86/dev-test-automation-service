@@ -10,13 +10,15 @@ public class RestaurantsSrvOps {
     static final String FETCH_RESTAURANTS_ALL = "SELECT * FROM restaurants_info";
     static final String INSERT_NEW_RESTAURANT = "INSERT INTO restaurants_info (name, address, contact_info, rating) VALUES (?, ?, ?, ?)";
     static final String DELETE_RESTAURANT_BY_ID= "DELETE FROM restaurants_info WHERE id = ?";
+    static final String UPDATE_RESTAURANT_BY_ID= "UPDATE restaurants_info SET rating = ? WHERE id = ?";
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner userAction = new Scanner(System.in);
         try {
             System.out.println("Select an option:");
             System.out.println("1) List all Restaurants");
             System.out.println("2) Add a New Restaurant");
-            System.out.println("3) List Restaurants and Delete Selected");
+            System.out.println("3) Update Restaurant");
+            System.out.println("4) List Restaurants and Delete Selected");
             System.out.println("q) Exit the actions menu");
             System.out.print("Enter your choice (1, 2, or 3), q to quit: ");
             String user_action = userAction.nextLine();
@@ -32,6 +34,10 @@ public class RestaurantsSrvOps {
                     addRestaurantToDB(INSERT_NEW_RESTAURANT);
                     break;
                 case "3":
+                    System.out.println("Selection: Update Restaurant");
+                    upd
+
+                case "4":
                     System.out.println("Selection: List Restaurants and Delete Selected");
                     getRestaurantsList(FETCH_RESTAURANTS_ALL);
                     System.out.print("Enter restaurant id to delete, or enter q to quit: ");
@@ -86,6 +92,12 @@ public class RestaurantsSrvOps {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+    public static void UpdateResturantDBRecord(String query) throws ClassNotFoundException, SQLException {
+        try {
+            String results = mysqlConn.dbQueryExec(query, id).toString();
+            "Restaurant with ID# " + id +  " Updated. " + results
         }
     }
     public static void delRestaurantFromDB(String query,Object id) throws ClassNotFoundException, SQLException {
