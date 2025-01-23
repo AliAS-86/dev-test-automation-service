@@ -7,7 +7,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: restaurants
       MYSQL_USER: admin
-      MYSQL_PASSWORD: T0k@lis1611
+      MYSQL_PASSWORD: adminpassword
 
     ports:
       - "3307:3306"

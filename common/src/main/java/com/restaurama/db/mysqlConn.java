@@ -17,9 +17,9 @@ public class mysqlConn {
 
     // Method to establish and return a new connection with MySQL DB
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        String url = "jdbc:mysql://127.0.0.1:3307/restaurants?useSSL=false";
+        String url = "jdbc:mysql://127.0.0.1:3307/restaurants?useSSL=false&allowPublicKeyRetrieval=true";
         String user = "admin";
-        String password = "T0k@lis1611";
+        String password = "adminpassword";
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(url, user, password);
     }
