@@ -14,6 +14,17 @@ services:
     volumes:
       - mysql-data-persistence:/var/lib/mysql
       - /home/alias-kube/dev/restaurama-food-app/mysql-init-seed-data.sql:/docker-entrypoint-initdb.d/mysql-init-seed-data.sql
+  mongo-db:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongo-db-menus
+    restart: always
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo-db-menus-data:/data/mongodb
 
 volumes:
   mysql-data-persistence:
+  mongo-db-menus-data:
