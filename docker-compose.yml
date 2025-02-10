@@ -7,13 +7,29 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: restaurants
       MYSQL_USER: admin
-      MYSQL_PASSWORD: T0k@lis1611
+      MYSQL_PASSWORD: adminpassword
 
     ports:
       - "3307:3306"
     volumes:
       - mysql-data-persistence:/var/lib/mysql
-      - /home/alias-kube/dev/restaurama-food-app/mysql-init-seed-data.sql:/docker-entrypoint-initdb.d/mysql-init-seed-data.sql
+      - /home/alias-kube/dev/restaurama-food-app/db-init-resources/mysql/mysql-init-seed-data.sql:/docker-entrypoint-initdb.d/mysql-init-seed-data.sql
+  mongo-db:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongo-db-menus
+    restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo-db-menus-data:/data/mongodb
+      - ./db-init-resources/mongodb/data_seeding.sh:/docker-entrypoint-initdb.d/data_seeding.sh
+      - ./db-init-resources/mongodb/init_menus.json:/docker-entrypoint-initdb.d/restaurant_menus.json
 
 volumes:
   mysql-data-persistence:
+  mongo-db-menus-data:

@@ -1,0 +1,60 @@
+[
+  {
+    "restaurant_id": 10001,
+    "name": "Pasta Palace",
+    "menus": [
+      {
+        "menu_id": 101,
+        "menu_name": "Lunch Menu",
+        "items": [
+          { "item_name": "Spaghetti", "price": 12.99 },
+          { "item_name": "Ravioli", "price": 10.99 }
+        ]
+      },
+      {
+        "menu_id": 102,
+        "menu_name": "Dinner Menu",
+        "items": [
+          { "item_name": "Lasagna", "price": 14.99 },
+          { "item_name": "Tiramisu", "price": 6.99 }
+        ]
+      }
+    ]
+  },
+  {
+    "restaurant_id": 10002,
+    "name": "Burger Barn",
+    "menus": [
+      {
+        "menu_id": 201,
+        "menu_name": "Classic Menu",
+        "items": [
+          { "item_name": "Cheeseburger", "price": 9.99 },
+          { "item_name": "Fries", "price": 3.49 }
+        ]
+      }
+    ]
+  },
+  {
+    "restaurant_id": 10003,
+    "name": "Sushi Spot",
+    "menus": [
+      {
+        "menu_id": 301,
+        "menu_name": "Lunch Specials",
+        "items": [
+          { "item_name": "Salmon Roll", "price": 8.99 },
+          { "item_name": "Tuna Sashimi", "price": 14.99 }
+        ]
+      },
+      {
+        "menu_id": 302,
+        "menu_name": "Dinner Specials",
+        "items": [
+          { "item_name": "Dragon Roll", "price": 12.99 },
+          { "item_name": "Miso Soup", "price": 3.99 }
+        ]
+      }
+    ]
+  }
+]

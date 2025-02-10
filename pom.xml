@@ -13,9 +13,10 @@
     <url>https://github.com/AliAS-86/restaurama-food-app</url>
     <modules>
         <module>common</module>
-        <module>restaurant-service</module>
-        <module>order-service</module>
-        <module>payment-service</module>
+        <module>restaurants-service</module>
+        <module>orders-service</module>
+        <module>users-service</module>
+        <module>payments-service</module>
 
     </modules>
     <!-- Maven Compiler Plugin - updating the source and target to use Java 17 -->
@@ -101,6 +102,21 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-crypt</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.16</version>
         </dependency>
     </dependencies>
 </project>
